@@ -1,3 +1,68 @@
+// first name validation
+function validateFname() {
+    fname = document.getElementById("fname").value.trim();
+    var namePattern = /^[a-zA-Z'-]+$/;
+    if (fname == "") {
+        document.getElementById("fname-error").innerHTML = "First name field cannot be empty"
+        return false;
+    } else if (fname != "") {
+        if (!fname.match(namePattern)) {
+        document.getElementById("fname-error").innerHTML = "Letters, apostrophes, and dashes only.";
+        return false;
+    } else if (fname.length < 2) {
+        document.getElementById("fname-error").innerHTML = "First name cannot be less than 2 characters.";
+        return false;
+    } else if (fname.length > 30) {
+        document.getElementById("fname-error").innerHTML = "First name cannot be more than 30 characters.";
+        return false;
+    } else {
+        document.getElementById("fname-error").innerHTML = "";
+        return true;
+    }
+}
+}
+
+//last name validation
+function validateLname() {
+    lname = document.getElementById("lname").value.trim();
+    var namePattern = /^[a-zA-Z'-]+$/;
+    if (lname == "") {
+        document.getElementById("lname-error").innerHTML = "Last name field cannot be empty"
+        return false;
+    } else if (lname != "") {
+        if (!lname.match(namePattern)) {
+        document.getElementById("lname-error").innerHTML = "Letters, apostrophes, and dashes only.";
+        return false;
+    } else if (lname.length < 2) {
+        document.getElementById("lname-error").innerHTML = "Last name cannot be less than 2 characters.";
+        return false;
+    } else if (lname.length > 30) {
+        document.getElementById("lname-error").innerHTML = "Last name cannot be more than 30 characters.";
+        return false;
+    } else {
+        document.getElementById("lname-error").innerHTML = "";
+        return true;
+    }
+}
+}
+
+//middle initial validation
+function validateMini() {
+    mini = document.getElementById("mini").value;
+    var namePattern = /^[A-Z]+$/;
+
+    mini = mini.toUpperCase();
+    document.getElementById("mini").value = mini;
+
+    if (!mini.match(namePattern)) {
+        document.getElementById("mini-error").innerHTML = 
+        "Middle initial must be a single uppercase letter";
+        return false;
+    } else {
+        document.getElementById("mini-error").innerHTML = "";
+        return true;
+    }
+}
 
 function validateFname() {
   var el = document.getElementById("fname");
@@ -206,3 +271,63 @@ function reviewInput() {
 function removeReview() {
   document.getElementById("showInput").innerHTML = "";
 }
+//alert box
+function showAlert() {
+    var alertBox = document.getElementById("alert-box");
+    var closeAlert = document.getElementById("close-alert");
+
+    alertBox.style.display = "block";
+    closeAlert.onclick = function() {
+        alertBox.style.display = "none";
+    };
+}
+
+//validate all info
+function validateEverything() {
+    let valid = true;
+
+    if (!validateFname()) {
+        valid = false;
+    }
+    if (!validateMini()) {
+        valid = false;
+    }
+    if (!validateLname()) {
+        valid = false;
+    }
+    if (!validateDob()) {
+        valid = false;
+    }
+    if (!validateSsn()) {
+        valid = false;
+    }
+    if (!validateAddress1()) {
+        valid = false;
+    }
+    if (!validateCity()) {
+        valid = false;
+    }
+    if (!validateZip()) {
+        valid = false;
+    }
+    if (!validateEmail()) {
+        valid = false;
+    }
+    if (!validatePhone()) {
+        valid = false;
+    }
+    if (!validateUid()) {
+        valid = false;
+    }
+    if (!validatePword()) {
+        valid = false;
+    }
+    if (!confirmPword()) {
+        valid = false;
+    }
+     if (valid) {
+         document.getElementById("submit").disabled = false;
+     } else{
+        showAlert();
+     }
+ }
