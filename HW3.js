@@ -271,6 +271,14 @@ function reviewInput() {
 function removeReview() {
   document.getElementById("showInput").innerHTML = "";
 }
+// city validation 
+function validateCity() {
+  var el = document.getElementById("city");
+  if (!el) return true; // nothing to validate
+  var ok = el.value.trim().length >= 2;
+  document.getElementById("city-error").innerHTML = ok ? "" : "Please enter a valid city";
+  return ok;
+}
 //alert box
 function showAlert() {
     var alertBox = document.getElementById("alert-box");
@@ -304,10 +312,11 @@ function validateEverything() {
     if (!validateAddress1()) {
         valid = false;
     }
-    if (!validateCity()) {
+  if (!validateCity()) {
         valid = false;
     }
-    if (!validateZip()) {
+  // zip function in this file is named validateZcode(), call that
+  if (!validateZcode()) {
         valid = false;
     }
     if (!validateEmail()) {
